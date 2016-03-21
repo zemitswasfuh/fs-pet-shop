@@ -1,14 +1,14 @@
-# Basic Node HTTP server
+# Node HTTP Server
 
 ![pet-shop](https://i.imgur.com/Ec7j4nr.jpg)
 
-A local pet shop keeps a database for all the pets they have in stock. However, they need you to build a Node server application that handles a variety of HTTP requests and sends an appropriate HTTP response back.
+A local pet shop keeps a database for all the pets they have in stock. However, they need you to build a server application in Node to handle a variety of HTTP requests and send an HTTP response back.
 
-The HTTP requests will be in the form of create, read, update, and destroy (CRUD) commands. These commands will ultimately manage their database, which is a JSON file. Once correctly handled, the server app will need to send an appropriate HTTP response back. Details of the HTTP requests that the server app will need to handle and their expected HTTP responses can be found below.
+The HTTP requests will be commands in the form of create, read, update, and destroy (CRUD). These commands will manage their database, which is the same JSON-formatted `pets.json` file. Once the command is correctly handled, the app will need to send an appropriate HTTP response back. Details of the HTTP requests that the app will need to handle and their expected HTTP responses can be found below.
 
 ## Getting started
 
-After you've fork and clone this repository to your development environment, change into the project directory.
+Change into the project directory.
 
 ```shell
 cd path/to/project
@@ -24,19 +24,6 @@ Create a `server.js` file for your HTTP server code.
 
 ```shell
 touch server.js
-```
-
-Ignore`node_modules` and `npm-debug.log` from the repository.
-
-```shell
-echo 'node_modules' >> .gitignore
-echo 'npm-debug.log' >> .gitignore
-```
-
-Finally, create a `.eslintrc.js` file and add your preferred linting rules.
-
-```shell
-touch .eslintrc.js
 ```
 
 ## Assignment

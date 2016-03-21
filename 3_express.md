@@ -1,10 +1,16 @@
-# Basic Express HTTP server
+# Express HTTP server
 
 ![pet-shop](https://i.imgur.com/rDxrIKA.jpg)
 
 Now that you've built a Node HTTP server, today's assignment is to convert it to Express.
 
 ## Getting started
+
+Change into the project directory.
+
+```shell
+cd path/to/project
+```
 
 Create and switch to a new feature branch.
 
@@ -16,6 +22,12 @@ Install `express` as a dependency.
 
 ```shell
 npm install --save express
+```
+
+Ignore `node_modules` from the repository.
+
+```shell
+echo 'node_modules' >> .gitignore
 ```
 
 ## Assignment

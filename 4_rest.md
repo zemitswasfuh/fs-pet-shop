@@ -1,10 +1,16 @@
-# Complete Express HTTP server
+# RESTful Express HTTP server
 
 ![pet-shop](https://i.imgur.com/oZFSFYq.jpg)
 
 Now that you've converted your Node HTTP server to Express, the final hurdle is to add route handlers for creating, updating, and destroying records in the database.
 
 ## Getting started
+
+Change into the project directory.
+
+```shell
+cd path/to/project
+```
 
 Create and switch to a new feature branch.
 
