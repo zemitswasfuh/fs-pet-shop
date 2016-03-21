@@ -63,9 +63,7 @@ $ node pets.js read -1
 Usage: node pets.js read INDEX
 ```
 
-## Bonus
-
-Refactor your app to also create records in the database when given the `create` subcommand. For example:
+Finally, your application must also handle the `create` subcommand. Only when given an `age`, `kind,` and `name` will it create a record in the database. Remember to convert the `age` into an integer. For example:
 
 ```shell
 $ node pets.js create
@@ -84,9 +82,15 @@ $ node pets.js read 2
 { age: 3, kind: 'parakeet', name: 'Cornflake' }
 ```
 
+If the `pets.json` file ever becomes corrupted, you can reset it with the `git checkout` command.
+
+```shell
+git checkout -- pets.json
+```
+
 ## Bonus
 
-Refactor your app to also update records in the database when given the `update` subcommand. For example:
+Refactor your app to also update records in the database when given the `update` subcommand. Remember to convert the `age` into an integer. For example:
 
 ```shell
 $ node pets.js update
@@ -129,6 +133,27 @@ Convert the code in your `pets.js` file into ES6 syntax. It may be helpful to us
 
 - [`eslint-config-airbnb`]['airbnb']
 - [`eslint-config-ryansobol`]['ryansobol']
+
+## Bonus
+
+Add a shebang to the start of the `pets.js` file and modify its permissions so it can be run from the command-line without the `node` command. For example:
+
+```shell
+$ ./pets.js read
+[ { age: 7, kind: 'rainbow', name: 'fido' },
+  { age: 5, kind: 'snake', name: 'Buttons' } ]
+
+$ ./pets.js read 0
+{ age: 7, kind: 'rainbow', name: 'fido' }
+
+$ ./pets.js create 3 parakeet Cornflake
+{ age: 3, kind: 'parakeet', name: 'Cornflake' }
+
+$ ./pets.js read
+[ { age: 7, kind: 'rainbow', name: 'fido' },
+  { age: 5, kind: 'snake', name: 'Buttons' },
+  { age: 3, kind: 'parakeet', name: 'Cornflake' } ]
+```
 
 
 ['airbnb']: https://www.npmjs.com/package/eslint-config-airbnb
