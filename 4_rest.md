@@ -116,9 +116,82 @@ Add [middleware]['500'] to handle all internal server errors and send an appropr
 
 Once this is working, refactor your server's route handlers to call the `next()` function to handle all filesystem errors.
 
+## Bonus
+
+Add [Basic access authentication]['auth'] middleware to protect all routes from unauthorized access. In other words, the middleware must send the following HTTP response for all unauthorized HTTP requests.
+
+| Response Status | Response Content-Type | Response WWW-Authenticate | Response Body           |
+|-----------------|-----------------------|---------------------------|-------------------------|
+| `401`           | `text/plain`          | `Basic realm="Required"`  | `Unauthorized`          |
+
+To make an authorized HTTP request, the user must specify the correct credentials such as a name of `admin` and a password of `meowmix`. The client will then encode the credentials and include them in the `Authorization` header of the HTTP request.
+
+| Request Method | Request URL | Request Authorization        |
+|----------------|-------------|------------------------------|
+| `GET`          | `/pets`     | `Basic YWRtaW46bWVvd21peA==` |
+
+Here's an example of making an unauthorized HTTP request.
+
+```shell
+$ http -v GET http://localhost:5000/pets
+GET /pets HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: localhost:5000
+User-Agent: HTTPie/0.9.3
+
+
+
+HTTP/1.1 401 Unauthorized
+Connection: keep-alive
+Content-Length: 12
+Content-Type: text/plain; charset=utf-8
+Date: Thu, 24 Mar 2016 13:33:33 GMT
+ETag: W/"c-4G0bpw8TMen5oRPML4h9Pw"
+WWW-Authenticate: Basic realm="Required"
+
+Unauthorized
+```
+
+And here's an example of making an authorized HTTP request.
+
+```shell
+$ http -v --auth admin:meowmix GET http://localhost:5000/pets
+GET /pets HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Authorization: Basic YWRtaW46bWVvd21peA==
+Connection: keep-alive
+Host: localhost:5000
+User-Agent: HTTPie/0.9.3
+
+
+
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 84
+Content-Type: application/json; charset=utf-8
+Date: Thu, 24 Mar 2016 13:33:53 GMT
+ETag: W/"54-D2Au1DrDyt59Q+wXwR4adQ"
+
+[
+    {
+        "age": 7,
+        "kind": "rainbow",
+        "name": "fido"
+    },
+    {
+        "age": 5,
+        "kind": "snake",
+        "name": "Buttons"
+    }
+]
+```
 
 ['404']: http://expressjs.com/en/starter/faq.html#how-do-i-handle-404-responses
 ['500']: http://expressjs.com/en/starter/faq.html#how-do-i-setup-an-error-handler
 ['airbnb']: https://www.npmjs.com/package/eslint-config-airbnb
+['auth']: https://en.wikipedia.org/wiki/Basic_access_authentication
 ['error-handling']: http://sahatyalkabov.com/jsrecipes/#!/backend/nodejs-error-handling
 ['ryansobol']: https://github.com/ryansobol/eslint-config-ryansobol#language-configuration
