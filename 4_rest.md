@@ -99,7 +99,7 @@ Convert the code in your `server.js` file into ES6 syntax. It may be helpful to 
 
 ## Bonus
 
-Add a catch all route handler for unknown HTTP requests and send the appropriate response.
+Add [404 Not Found]['404'] middleware to handle all unknown HTTP requests and send an appropriate response.
 
 | Request Method | Request URL | Response Status | Response Content-Type | Response Body |
 |----------------|-------------|-----------------|-----------------------|---------------|
@@ -108,17 +108,17 @@ Add a catch all route handler for unknown HTTP requests and send the appropriate
 
 ## Bonus
 
-Add [middleware]['500'] to handle all internal server errors and send an appropriate response. It may be helpful to test your error-handling middleware with a route handler that calls the `next()` function with a `new Error()`. See approach #2 in the [Node.js Error Handling]['error-handling'] guide for more details on how the `next()` function works in Express.
+Add [500 Internal Server Error]['500'] middleware to handle all internal server errors and send an appropriate response. It may be helpful to test your error-handling middleware with a route handler that calls the `next()` function with a `new Error()`. See approach #2 in the [Node.js Error Handling]['error-handling'] guide for more details on how the `next()` function works in Express.
 
 | Request Method | Request URL | Response Status | Response Content-Type | Response Body           |
 |----------------|-------------|-----------------|-----------------------|-------------------------|
 | `GET`          | `/boom`     | `500`           | `text/plain`          | `Internal Server Error` |
 
-Once this is working, refactor your server's route handlers to call the `next()` function to handle all filesystem errors.
+Once this is working, refactor your server's route handlers to call the `next()` function to handle all filesystem errors instead of using `throw`.
 
 ## Bonus
 
-Add [Basic access authentication]['auth'] middleware to protect all routes from unauthorized access. In other words, the middleware must send the following HTTP response for all unauthorized HTTP requests.
+Add [basic access authentication]['auth'] middleware to protect all routes from unauthorized access. In other words, the middleware must send the following HTTP response for all unauthorized HTTP requests.
 
 | Response Status | Response Content-Type | Response WWW-Authenticate | Response Body           |
 |-----------------|-----------------------|---------------------------|-------------------------|
