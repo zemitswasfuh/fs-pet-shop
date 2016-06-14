@@ -37,6 +37,8 @@ Your task is to build a Node server application that handles the following HTTP 
 | `GET`          | `/pets/1`   | `200`           | `application/json`    | `{ "age": 5, "kind": "snake", "name": "Buttons" }`                                                         |
 | `GET`          | `/pets/2`   | `404`           | `text/plain`          | `Not found`                                                                                                |
 | `GET`          | `/pets/-1`  | `404`           | `text/plain`          | `Not found`                                                                                                |
+| `GET`          | `/`         | `404`           | `text/plain`          | `Not found`                                                                                                |
+| `GET`          | `/blah`     | `404`           | `text/plain`          | `Not found`                                                                                                |
 
 To test your HTTP server, first install the `nodemon` package globally.
 
@@ -81,15 +83,6 @@ Be mindful about responding to indices that don't exist in the database.
 |----------------|---------------------|-----------------|-----------------------|---------------|
 | `GET`          | `/pets/9000`        | `404`           | `text/plain`          | `Not found`   |
 | `GET`          | `/pets/abracadabra` | `404`           | `text/plain`          | `Not found`   |
-
-## Bonus
-
-Add a catch all route handler for unknown HTTP requests and send the appropriate response.
-
-| Request Method | Request URL | Response Status | Response Content-Type | Response Body |
-|----------------|-------------|-----------------|-----------------------|---------------|
-| `GET`          | `/`         | `404`           | `text/plain`          | `Not found`   |
-| `GET`          | `/blah`     | `404`           | `text/plain`          | `Not found`   |
 
 ## Bonus
 
