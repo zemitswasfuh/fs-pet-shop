@@ -51,7 +51,7 @@ nodemon server.js
 Open a new shell tab and use the `http` shell command to send HTTP requests to your server.
 
 ```shell
-http http://localhost:5000/pets
+http http://localhost:8000/pets
 ```
 
 Once you've successfully converted the server app to Express, check out the `master` branch.
@@ -84,7 +84,7 @@ In future parts of this assignment, your server will need to handle create, upda
 You can send create commands to the server app with the following command
 
 ```shell
-http POST http://localhost:5000/pets age=3 kind=parakeet name=Cornflake
+http POST http://localhost:8000/pets age=3 kind=parakeet name=Cornflake
 ```
 
 If `age`, `kind`, or `name` are missing from the HTTP request body or `age` is not an integer, then the data must not be added to the database and the server must send back the follow HTTP response.
