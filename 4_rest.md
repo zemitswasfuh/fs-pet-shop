@@ -49,7 +49,7 @@ nodemon server.js
 Open a new shell tab and use the `http` shell command to send HTTP requests to your server.
 
 ```shell
-http POST http://localhost:8000/pets age=3 kind=parakeet name=Cornflake
+http POST localhost:8000/pets age=3 kind=parakeet name=Cornflake
 ```
 
 When handling the `POST` and `PUT` HTTP request methods, if `age`, `kind`, or `name` are missing from the HTTP request body or `age` is not an integer, then the data must not be added to the database and the server must send back the follow HTTP response.
