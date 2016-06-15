@@ -41,6 +41,8 @@ Your task is to convert the Node HTTP server you built yesterday into an Express
 | `GET`          | `/pets/1`   | `200`           | `application/json`    | `{ "age": 5, "kind": "snake", "name": "Buttons" }`                                                         |
 | `GET`          | `/pets/2`   | `404`           | `text/plain`          | `Not found`                                                                                                |
 | `GET`          | `/pets/-1`  | `404`           | `text/plain`          | `Not found`                                                                                                |
+| `GET`          | `/`         | `404`           | `text/plain`          | `Not found`                                                                                                |
+| `GET`          | `/blah`     | `404`           | `text/plain`          | `Not found`                                                                                                |
 
 Like before, start the HTTP server with `nodemon`.
 
@@ -100,15 +102,6 @@ Convert the code in your `server.js` file into ES6 syntax. It may be helpful to 
 
 - [`eslint-config-airbnb`]['airbnb']
 - [`eslint-config-ryansobol`]['ryansobol']
-
-## Bonus
-
-Add [404 Not Found]['404'] middleware to handle all unknown HTTP requests and send an appropriate response.
-
-| Request Method | Request URL | Response Status | Response Content-Type | Response Body |
-|----------------|-------------|-----------------|-----------------------|---------------|
-| `GET`          | `/`         | `404`           | `text/plain`          | `Not found`   |
-| `GET`          | `/blah`     | `404`           | `text/plain`          | `Not found`   |
 
 ## Bonus
 
