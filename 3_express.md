@@ -113,6 +113,10 @@ Add [500 Internal Server Error]['500'] middleware to handle all internal server 
 
 Once this is working, refactor your server's route handlers to call the `next()` function to handle all filesystem errors instead of using `throw`.
 
+## Bonus
+
+Deploy your HTTP server to Heroku.
+
 
 ['404']: http://expressjs.com/en/starter/faq.html#how-do-i-handle-404-responses
 ['500']: http://expressjs.com/en/starter/faq.html#how-do-i-setup-an-error-handler

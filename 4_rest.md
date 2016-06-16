@@ -189,6 +189,11 @@ ETag: W/"54-D2Au1DrDyt59Q+wXwR4adQ"
 ]
 ```
 
+## Bonus
+
+Deploy your HTTP server to Heroku.
+
+
 ['404']: http://expressjs.com/en/starter/faq.html#how-do-i-handle-404-responses
 ['500']: http://expressjs.com/en/starter/faq.html#how-do-i-setup-an-error-handler
 ['airbnb']: https://www.npmjs.com/package/eslint-config-airbnb

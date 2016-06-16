@@ -113,6 +113,10 @@ If `age`, `kind`, or `name` are missing from the HTTP request body or `age` is n
 | `POST`         | `/pets`     | `{ "name": "", "age": "two", "kind": "" }` | `400`           | `text/plain`          | `Bad Request` |
 | `GET`          | `/pets/4`   | N/A                                        | `404`           | `text/plain`          | `Not Found`   |
 
+## Bonus
+
+Deploy your HTTP server to Heroku.
+
 
 ['airbnb']: https://www.npmjs.com/package/eslint-config-airbnb
 ['match']: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match
