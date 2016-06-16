@@ -15,7 +15,7 @@ cd path/to/project
 Create and switch to a new feature branch.
 
 ```shell
-git checkout -b express_routes
+git checkout -b rest
 ```
 
 Install `body-parser` and `morgan` as a dependencies.
@@ -39,6 +39,8 @@ Your next task is to add routes to handle the create, update, and destroy HTTP c
 | `GET`          | `/pets/3`   | N/A                                                     | `200`           | `application/json`    | `{ "name": "Scooter", "age": 4, "kind": "puppy" }`      |
 | `DELETE`       | `/pets/3`   | N/A                                                     | `200`           | `application/json`    | `{ "name": "Scooter", "age": 4, "kind": "puppy" }`      |
 | `GET`          | `/pets/3`   | N/A                                                     | `404`           | `text/plain`          | `Not Found`                                             |
+| `GET`          | `/`         | N/A                                                     | `404`           | `text/plain`          | `Not found`                                             |
+| `GET`          | `/blah`     | N/A                                                     | `404`           | `text/plain`          | `Not found`                                             |
 
 Like before, start the HTTP server with `nodemon`.
 
@@ -70,13 +72,13 @@ git checkout master
 Merge the feature branch into `master`.
 
 ```shell
-git merge express_routes
+git merge rest
 ```
 
 And delete the feature branch.
 
 ```shell
-git br -d express_routes
+git br -d rest
 ```
 
 ## Bonus
@@ -96,15 +98,6 @@ Convert the code in your `server.js` file into ES6 syntax. It may be helpful to 
 
 - [`eslint-config-airbnb`]['airbnb']
 - [`eslint-config-ryansobol`]['ryansobol']
-
-## Bonus
-
-Add [404 Not Found]['404'] middleware to handle all unknown HTTP requests and send an appropriate response.
-
-| Request Method | Request URL | Response Status | Response Content-Type | Response Body |
-|----------------|-------------|-----------------|-----------------------|---------------|
-| `GET`          | `/`         | `404`           | `text/plain`          | `Not found`   |
-| `GET`          | `/blah`     | `404`           | `text/plain`          | `Not found`   |
 
 ## Bonus
 
