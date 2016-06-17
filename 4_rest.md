@@ -206,7 +206,10 @@ ETag: W/"54-D2Au1DrDyt59Q+wXwR4adQ"
 
 ## Bonus
 
+Use an Express router to group and export your resource-specific `/pets` routes into a `routes/pets.js` module. In the `server.js` module, require and use it in the correct middleware order. To learn about the Express router, see the following documentation.
 
+- [Express API - `express.Router()`](http://expressjs.com/en/4x/api.html#express.router)
+- [Express API - Router](http://expressjs.com/en/4x/api.html#router)
 
 
 ['404']: http://expressjs.com/en/starter/faq.html#how-do-i-handle-404-responses
