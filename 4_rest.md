@@ -81,6 +81,28 @@ And delete the feature branch.
 git br -d rest
 ```
 
+Then, create a valid `Procfile` so you can deploy your RESTful Express server to Heroku.
+
+```shell
+echo 'web: node server.js' > Procfile
+```
+
+Add and commit this change to your local `master` branch. Then, create an app on Heroku.
+
+**NOTE:** Replace `USERNAME` with the lowercase form of your GitHub username.
+
+```shell
+heroku create USERNAME-pet-shop
+```
+
+And push the local `master` branch to your Heroku app's `master` branch.
+
+```shell
+git push heroku master
+```
+
+Throughly test your RESTful Express server on Heroku to verify it works as expected. Your instructors will be using your deployed server to grade this assignment. To help your instructors find your deployed server, be a pal and add the URL of your live Heroku app to the URL field on your GitHub repository's landing page.
+
 ## Bonus
 
 Add a route to handle the `PATCH` HTTP request method. The `PATCH` method issues a command to partially update a record in the database.
@@ -184,7 +206,7 @@ ETag: W/"54-D2Au1DrDyt59Q+wXwR4adQ"
 
 ## Bonus
 
-Deploy your HTTP server to Heroku.
+
 
 
 ['404']: http://expressjs.com/en/starter/faq.html#how-do-i-handle-404-responses
