@@ -9,20 +9,20 @@ Now that you've converted your Node HTTP server to Express, the final hurdle is 
 Change into the project directory.
 
 ```shell
-cd path/to/project
+$ cd path/to/project
 ```
 
 Create and switch to a new feature branch.
 
 ```shell
-git checkout -b rest
+$ git checkout -b express_routes
 ```
 
 Install `body-parser` and `morgan` as a dependencies.
 
 ```shell
-npm install --save body-parser
-npm install --save morgan
+$ npm install --save body-parser
+$ npm install --save morgan
 ```
 
 ## Assignment
@@ -39,19 +39,17 @@ Your next task is to add routes to handle the create, update, and destroy HTTP c
 | `GET`          | `/pets/3`   | N/A                                                     | `200`           | `application/json`    | `{ "name": "Scooter", "age": 4, "kind": "puppy" }`      |
 | `DELETE`       | `/pets/3`   | N/A                                                     | `200`           | `application/json`    | `{ "name": "Scooter", "age": 4, "kind": "puppy" }`      |
 | `GET`          | `/pets/3`   | N/A                                                     | `404`           | `text/plain`          | `Not Found`                                             |
-| `GET`          | `/`         | N/A                                                     | `404`           | `text/plain`          | `Not found`                                             |
-| `GET`          | `/blah`     | N/A                                                     | `404`           | `text/plain`          | `Not found`                                             |
 
 Like before, start the HTTP server with `nodemon`.
 
 ```shell
-nodemon server.js
+$ nodemon server.js
 ```
 
 Open a new shell tab and use the `http` shell command to send HTTP requests to your server.
 
 ```shell
-http POST localhost:8000/pets age=3 kind=parakeet name=Cornflake
+$ http POST http://localhost:8000/pets age=3 kind=parakeet name=Cornflake
 ```
 
 When handling the `POST` and `PUT` HTTP request methods, if `age`, `kind`, or `name` are missing from the HTTP request body or `age` is not an integer, then the data must not be added to the database and the server must send back the follow HTTP response.
@@ -66,42 +64,28 @@ When handling the `POST` and `PUT` HTTP request methods, if `age`, `kind`, or `n
 Once you've successfully added these route handlers, check out the `master` branch.
 
 ```shell
-git checkout master
+$ git checkout master
 ```
 
 Merge the feature branch into `master`.
 
 ```shell
-git merge rest
+$ git merge express_routes
 ```
 
 And delete the feature branch.
 
 ```shell
-git br -d rest
+$ git br -d express_routes
 ```
 
-Then, create a valid `Procfile` so you can deploy your RESTful Express server to Heroku.
+## Tests
+
+We have provided tests for you to check your work. To run the command for this exercise, run the following command.
 
 ```shell
-echo 'web: node server.js' > Procfile
+$ npm test test/restfulExpressServer.test.js
 ```
-
-Add and commit this change to your local `master` branch. Then, create an app on Heroku.
-
-**NOTE:** Replace `USERNAME` with the lowercase form of your GitHub username.
-
-```shell
-heroku create USERNAME-pet-shop
-```
-
-And push the local `master` branch to your Heroku app's `master` branch.
-
-```shell
-git push heroku master
-```
-
-Throughly test your RESTful Express server on Heroku to verify it works as expected. Your instructors will be using your deployed server to grade this assignment. To help your instructors find your deployed server, be a pal and add the URL of your live Heroku app to the URL field on your GitHub repository's landing page.
 
 ## Bonus
 
@@ -120,6 +104,15 @@ Convert the code in your `server.js` file into ES6 syntax. It may be helpful to 
 
 - [`eslint-config-airbnb`]['airbnb']
 - [`eslint-config-ryansobol`]['ryansobol']
+
+## Bonus
+
+Add [404 Not Found]['404'] middleware to handle all unknown HTTP requests and send an appropriate response.
+
+| Request Method | Request URL | Response Status | Response Content-Type | Response Body |
+|----------------|-------------|-----------------|-----------------------|---------------|
+| `GET`          | `/`         | `404`           | `text/plain`          | `Not found`   |
+| `GET`          | `/blah`     | `404`           | `text/plain`          | `Not found`   |
 
 ## Bonus
 
@@ -204,13 +197,15 @@ ETag: W/"54-D2Au1DrDyt59Q+wXwR4adQ"
 ]
 ```
 
-## Bonus
+## Bonus Tests
 
-Use an Express router to group and export your resource-specific `/pets` routes into a `routes/pets.js` module. In the `server.js` module, require and use it in the correct middleware order. To learn about the Express router, see the following documentation.
+We have provided tests for you to check your work specifically for the bonus. To run the command for this exercise, run the following command.
 
-- [Express API - `express.Router()`](http://expressjs.com/en/4x/api.html#express.router)
-- [Express API - Router](http://expressjs.com/en/4x/api.html#router)
+```shell
+$ npm test test/restfulExpressServer.bonus.test.js
+```
 
+**NOTE** For Basic Authentication, the tests assume the username is "admin"  and the password is "meowmix".
 
 ['404']: http://expressjs.com/en/starter/faq.html#how-do-i-handle-404-responses
 ['500']: http://expressjs.com/en/starter/faq.html#how-do-i-setup-an-error-handler

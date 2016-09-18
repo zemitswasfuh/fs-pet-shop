@@ -11,19 +11,13 @@ The HTTP requests will be commands in the form of create, read, update, and dest
 Change into the project directory.
 
 ```shell
-cd path/to/project
-```
-
-Initialize a `package.json` file and set the main entry point to `server.js`.
-
-```shell
-npm init
+$ cd path/to/project
 ```
 
 Create a `server.js` file for your HTTP server code.
 
 ```shell
-touch server.js
+$ touch httpServer.js
 ```
 
 ## Assignment
@@ -32,36 +26,40 @@ Your task is to build a Node server application that handles the following HTTP 
 
 | Request Method | Request URL | Response Status | Response Content-Type | Response Body                                                                                              |
 |----------------|-------------|-----------------|-----------------------|------------------------------------------------------------------------------------------------------------|
-| `GET`          | `/pets`     | `200`           | `application/json`    | `[{ "age": 7, "kind": "rainbow", "name": "Lil Chris" }, { "age": 5, "kind": "snake", "name": "Buttons" }]` |
-| `GET`          | `/pets/0`   | `200`           | `application/json`    | `{ "age": 7, "kind": "rainbow", "name": "Lil Chris" }`                                                     |
+| `GET`          | `/pets`     | `200`           | `application/json`    | `[{ "age": 7, "kind": "rainbow", "name": "fido" }, { "age": 5, "kind": "snake", "name": "Buttons" }]` |
+| `GET`          | `/pets/0`   | `200`           | `application/json`    | `{ "age": 7, "kind": "rainbow", "name": "fido" }`                                                     |
 | `GET`          | `/pets/1`   | `200`           | `application/json`    | `{ "age": 5, "kind": "snake", "name": "Buttons" }`                                                         |
 | `GET`          | `/pets/2`   | `404`           | `text/plain`          | `Not found`                                                                                                |
 | `GET`          | `/pets/-1`  | `404`           | `text/plain`          | `Not found`                                                                                                |
-| `GET`          | `/`         | `404`           | `text/plain`          | `Not found`                                                                                                |
-| `GET`          | `/blah`     | `404`           | `text/plain`          | `Not found`                                                                                                |
 
 To test your HTTP server, first install the `nodemon` package globally.
 
 ```shell
-npm install -g nodemon
+$ npm install -g nodemon
 ```
 
 Start the HTTP server with `nodemon`.
 
 ```shell
-nodemon server.js
+$ nodemon httpServer.js
 ```
 
 Open a new shell tab and install HTTPie.
 
 ```shell
-brew install httpie
+$ brew install httpie
 ```
 
 Use the new `http` shell command to send HTTP requests to your server. Remember to set the port of your HTTP server to something like `8000`.
 
 ```shell
-http http://localhost:8000/pets
+$ http http://localhost:8000/pets
+```
+
+We have provided tests for you to check your work. To run the command for this exercise, run the following command.
+
+```shell
+$ npm test test/httpServer.test.js
 ```
 
 ## Bonus
@@ -69,7 +67,7 @@ http http://localhost:8000/pets
 See if you can simplify your route handler with the following regular expression.
 
 ```js
-var petRegExp = /^\/pets\/(.*)$/;
+const petRegExp = /^\/pets\/(.*)$/;
 ```
 
 You may find the following regular expression methods useful.
@@ -83,6 +81,15 @@ Be mindful about responding to indices that don't exist in the database.
 |----------------|---------------------|-----------------|-----------------------|---------------|
 | `GET`          | `/pets/9000`        | `404`           | `text/plain`          | `Not found`   |
 | `GET`          | `/pets/abracadabra` | `404`           | `text/plain`          | `Not found`   |
+
+## Bonus
+
+Add a catch all route handler for unknown HTTP requests and send the appropriate response.
+
+| Request Method | Request URL | Response Status | Response Content-Type | Response Body |
+|----------------|-------------|-----------------|-----------------------|---------------|
+| `GET`          | `/`         | `404`           | `text/plain`          | `Not found`   |
+| `GET`          | `/blah`     | `404`           | `text/plain`          | `Not found`   |
 
 ## Bonus
 
@@ -103,7 +110,7 @@ In future parts of this assignment, your server will need to handle create, upda
 You can send create commands to the server app with the following command
 
 ```shell
-http POST localhost:8000/pets age=3 kind=parakeet name=Cornflake
+http POST http://localhost:8000/pets age=3 kind=parakeet name=Cornflake
 ```
 
 If `age`, `kind`, or `name` are missing from the HTTP request body or `age` is not an integer, then the data must not be added to the database and the server must send back the follow HTTP response.
@@ -113,10 +120,13 @@ If `age`, `kind`, or `name` are missing from the HTTP request body or `age` is n
 | `POST`         | `/pets`     | `{ "name": "", "age": "two", "kind": "" }` | `400`           | `text/plain`          | `Bad Request` |
 | `GET`          | `/pets/4`   | N/A                                        | `404`           | `text/plain`          | `Not Found`   |
 
-## Bonus
+## Bonus Tests
 
-Deploy your HTTP server to Heroku.
+We have provided tests for you to check your work for the bonus specifically. To run the command for this exercise, run the following command.
 
+```shell
+$ npm test test/httpServer.bonus.test.js
+```
 
 ['airbnb']: https://www.npmjs.com/package/eslint-config-airbnb
 ['match']: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match

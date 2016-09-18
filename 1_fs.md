@@ -8,10 +8,17 @@ The subcommands will be in the form of create, read, update, and destroy (CRUD).
 
 ## Getting started
 
-After you've fork and clone this repository to your development environment, change into the project directory.
+After you've fork and clone this repository to your development environment, change into the project directory and install any dependencies.
 
 ```shell
 cd path/to/project
+npm install
+```
+
+Ignore `node_modules` from the repository.
+
+```shell
+echo 'node_modules' >> .gitignore
 ```
 
 Create a `pets.js` file for your filesystem code.
@@ -85,7 +92,13 @@ $ node pets.js read 2
 If the `pets.json` file ever becomes corrupted, you can reset it with the `git checkout` command.
 
 ```shell
-git checkout -- pets.json
+$ git checkout -- pets.json
+```
+
+We have provided tests for you to check your work. To run the command for this exercise, run the following command.
+
+```shell
+$ npm test test/pets.test.js
 ```
 
 ## Bonus
@@ -155,6 +168,13 @@ $ ./pets.js read
   { age: 3, kind: 'parakeet', name: 'Cornflake' } ]
 ```
 
+## Bonus Tests
+
+We have provided tests for you to check your work for the bonus specifically. To run the command for this exercise, run the following command.
+
+```shell
+$ npm test test/pets.bonus.test.js
+```
 
 ['airbnb']: https://www.npmjs.com/package/eslint-config-airbnb
 ['argv']: https://nodejs.org/api/process.html#process_process_argv
