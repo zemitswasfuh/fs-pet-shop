@@ -15,7 +15,7 @@ cd path/to/project
 npm install
 ```
 
-Ignore `node_modules` from the repository.
+Ignore `node_modules` from the repository. This prevents your node modules folder to be included in your repository.
 
 ```shell
 echo 'node_modules' >> .gitignore
