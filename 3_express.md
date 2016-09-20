@@ -33,8 +33,8 @@ Your task is to convert the Node HTTP server you built yesterday into an Express
 | `GET`          | `/pets`     | `200`           | `application/json`    | `[{ "age": 7, "kind": "rainbow", "name": "fido" }, { "age": 5, "kind": "snake", "name": "Buttons" }]` |
 | `GET`          | `/pets/0`   | `200`           | `application/json`    | `{ "age": 7, "kind": "rainbow", "name": "fido" }`                                                     |
 | `GET`          | `/pets/1`   | `200`           | `application/json`    | `{ "age": 5, "kind": "snake", "name": "Buttons" }`                                                         |
-| `GET`          | `/pets/2`   | `404`           | `text/plain`          | `Not found`                                                                                                |
-| `GET`          | `/pets/-1`  | `404`           | `text/plain`          | `Not found`                                                                                                |
+| `GET`          | `/pets/2`   | `404`           | `text/plain`          | `Not Found`                                                                                                |
+| `GET`          | `/pets/-1`  | `404`           | `text/plain`          | `Not Found`                                                                                                |
 
 Like before, start the HTTP server with `nodemon`.
 
@@ -113,8 +113,8 @@ Add [404 Not Found]['404'] middleware to handle all unknown HTTP requests and se
 
 | Request Method | Request URL | Response Status | Response Content-Type | Response Body |
 |----------------|-------------|-----------------|-----------------------|---------------|
-| `GET`          | `/`         | `404`           | `text/plain`          | `Not found`   |
-| `GET`          | `/blah`     | `404`           | `text/plain`          | `Not found`   |
+| `GET`          | `/`         | `404`           | `text/plain`          | `Not Found`   |
+| `GET`          | `/blah`     | `404`           | `text/plain`          | `Not Found`   |
 
 ## Bonus
 
