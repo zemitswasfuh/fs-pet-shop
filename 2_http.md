@@ -56,7 +56,15 @@ Use the new `http` shell command to send HTTP requests to your server. Remember 
 $ http http://localhost:8000/pets
 ```
 
-We have provided tests for you to check your work. To run the command for this exercise, run the following command.
+We have provided tests for you to check your work. In order for the tests to run, you will need to export your server so the tests can import it in using `require`. To export your server, simply write the following line at the bottom of the file:
+
+```javascript
+module.exports = server;
+```
+
+where `server` is the variable that is assigned the result from `http.createServer`.
+
+To run the test command for this exercise, run the following command.
 
 ```shell
 $ npm test test/httpServer.test.js
