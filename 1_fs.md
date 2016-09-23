@@ -8,14 +8,14 @@ The subcommands will be in the form of create, read, update, and destroy (CRUD).
 
 ## Getting started
 
-After you've fork and clone this repository to your development environment, change into the project directory and install any dependencies.
+After you fork and clone this repository to your development environment, change into the project directory and install any dependencies.
 
 ```shell
 cd path/to/project
 npm install
 ```
 
-Ignore `node_modules` from the repository. This prevents your node modules folder to be included in your repository.
+Ignore `node_modules` from the repository. This prevents your node modules folder from being included in your repository.
 
 ```shell
 echo 'node_modules' >> .gitignore
@@ -42,7 +42,7 @@ $ node pets.js
 Usage: node pets.js [read | create | update | destroy]
 ```
 
-Your next task is to refactor the application to handle the `read` subcommand via the [process arguments]['argv'], read the `pets.json` file, parse its data to a native JavaScript object, and log it the console. If the call to the filesystem fails for any reason, it should throw the resulting error.
+Your next task is to refactor the application to handle the `read` subcommand via the [process arguments]['argv'], read the `pets.json` file, parse its data to a native JavaScript object, and log it to the console. If the call to the filesystem fails for any reason, it should throw the resulting error.
 
 ```shell
 $ node pets.js read
@@ -50,7 +50,7 @@ $ node pets.js read
   { age: 5, kind: 'snake', name: 'Buttons' } ]
 ```
 
-Additionally, your application must handle the `read` subcommand when given an index. In this case, it must read the `pets.json` file, parse its data to a native JavaScript object, access the correct record, and log it the console. If the call to the filesystem fails for any reason, it should throw the resulting error.
+Additionally, your application must handle the `read` subcommand when given an index. In this case, it must read the `pets.json` file, parse its data to a native JavaScript object, access the correct record, and log it to the console. If the call to the filesystem fails for any reason, it should throw the resulting error.
 
 ```shell
 $ node pets.js read 0
@@ -149,7 +149,7 @@ Convert the code in your `pets.js` file into ES6 syntax. It may be helpful to us
 
 ## Bonus
 
-Add a shebang to the start of the `pets.js` file and modify its permissions so it can be run from the command-line without the `node` command. For example:
+Add a shebang(#!) to the start of the `pets.js` file and modify its permissions so it can be run from the command-line without the `node` command. For example:
 
 ```shell
 $ ./pets.js read
