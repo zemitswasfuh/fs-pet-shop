@@ -7,6 +7,6 @@ This is a multi-day assignment split into the following parts. Your task is to c
 1. [Express HTTP Server](3_express.md)
 1. [RESTful Express HTTP Server](4_rest.md)
 
-Additionally, each part has a set of optional bonus assignments to try once you completed the its main assignment. Since parts share many of the same bonus assignments, you may move to the next part without having finished all the bonuses.
+Additionally, each part has a set of optional bonus assignments to try once you complete its main assignment. Since parts share many of the same bonus assignments, you may move to the next part without having finished all the bonuses.
 
 The [solutions](https://github.com/gSchool/fs-pet-shop-solutions) are available to instructors as well as students who've completed this series.
