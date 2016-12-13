@@ -14,7 +14,7 @@ Change into the project directory.
 $ cd path/to/project
 ```
 
-Create a `server.js` file for your HTTP server code.
+Create an `httpServer.js` file for your HTTP server code.
 
 ```shell
 $ touch httpServer.js
@@ -53,7 +53,7 @@ $ brew install httpie
 Use the new `http` shell command to send HTTP requests to your server. Remember to set the port of your HTTP server to something like `8000`.
 
 ```shell
-$ http http://localhost:8000/pets
+$ http GET localhost:8000/pets
 ```
 
 We have provided tests for you to check your work. In order for the tests to run, you will need to export your server so the tests can import it in using `require`. To export your server, simply write the following line at the bottom of the file:
