@@ -51,7 +51,7 @@ $ nodemon server.js
 Open a new shell tab and use the `http` shell command to send HTTP requests to your server.
 
 ```shell
-$ http POST http://localhost:8000/pets age=3 kind=parakeet name=Cornflake
+$ http POST localhost:8000/pets age=3 kind=parakeet name=Cornflake
 ```
 
 When handling the `POST` HTTP request method, if `age`, `kind`, or `name` are missing from the HTTP request body or `age` is not an integer, then the data must not be added to the database and the server must send back the follow HTTP response.
@@ -70,13 +70,13 @@ $ git checkout master
 Merge the feature branch into `master`.
 
 ```shell
-$ git merge express_routes
+$ git merge restful_express_routes
 ```
 
 And delete the feature branch.
 
 ```shell
-$ git br -d express_routes
+$ git br -d restful_express_routes
 ```
 
 ## Tests
@@ -136,7 +136,7 @@ To make an authorized HTTP request, the user must specify the correct credential
 Here's an example of making an unauthorized HTTP request.
 
 ```shell
-$ http -v GET http://localhost:8000/pets
+$ http -v GET localhost:8000/pets
 GET /pets HTTP/1.1
 Accept: */*
 Accept-Encoding: gzip, deflate
@@ -160,7 +160,7 @@ Unauthorized
 And here's an example of making an authorized HTTP request.
 
 ```shell
-$ http -v --auth admin:meowmix GET http://localhost:8000/pets
+$ http -v --auth admin:meowmix GET localhost:8000/pets
 GET /pets HTTP/1.1
 Accept: */*
 Accept-Encoding: gzip, deflate
