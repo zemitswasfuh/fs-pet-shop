@@ -15,7 +15,7 @@ $ cd path/to/project
 Create and switch to a new feature branch.
 
 ```shell
-$ git checkout -b express_routes
+$ git checkout -b restful_express_routes
 ```
 
 Install `body-parser` and `morgan` as a dependencies.
@@ -29,16 +29,18 @@ $ npm install --save morgan
 
 Your first task is to wire up `body-parser` and `morgan` as middleware to your express app. They will greatly help you with the rest of the assignment.
 
-Your next task is to add routes to handle the create, update, and destroy HTTP commands. The route handlers must translate their respective command into an appropriate action that manages the records in the database. Once the database action is complete, the route handlers must send back an appropriate HTTP response.
+Your next task is to create a RESTful Express HTTP server called `restfulExpressServer.js` to handle the create, update, and destroy HTTP commands. The route handlers must translate their respective command into an appropriate action that manages the records in the database. Once the database action is complete, the route handlers must send back an appropriate HTTP response.
 
 | Request Method | Request URL | Request Body                                            | Response Status | Response Content-Type | Response Body                                           |
 |----------------|-------------|---------------------------------------------------------|-----------------|-----------------------|---------------------------------------------------------|
 | `POST`         | `/pets`     | `{ "name": "Cornflake", "age": 3, "kind": "parakeet" }` | `200`           | `application/json`    | `{ "name": "Cornflake", "age": 3, "kind": "parakeet" }` |
 | `GET`          | `/pets/3`   | N/A                                                     | `200`           | `application/json`    | `{ "name": "Cornflake", "age": 3, "kind": "parakeet" }` |
-| `PATCH`          | `/pets/3`   | `{ "name": "Scooter", "age": 4, "kind": "puppy" }`      | `200`           | `application/json`    | `{ "name": "Scooter", "age": 4, "kind": "puppy" }`      |
-| `GET`          | `/pets/3`   | N/A                                                     | `200`           | `application/json`    | `{ "name": "Scooter", "age": 4, "kind": "puppy" }`      |
-| `DELETE`       | `/pets/3`   | N/A                                                     | `200`           | `application/json`    | `{ "name": "Scooter", "age": 4, "kind": "puppy" }`      |
+| `PATCH`        | `/pets/3`   | `{ "name": "Fido" }`                                    | `200`           | `application/json`    | `{ "name": "Fido", "age": 3, "kind": "parakeet" }`      |
+| `GET`          | `/pets/3`   | N/A                                                     | `200`           | `application/json`    | `{ "name": "Fido", "age": 3, "kind": "parakeet" }`      |
+| `DELETE`       | `/pets/3`   | N/A                                                     | `200`           | `application/json`    | `{ "name": "Fido", "age": 3, "kind": "parakeet" }`      |
 | `GET`          | `/pets/3`   | N/A                                                     | `404`           | `text/plain`          | `Not Found`                                             |
+
+**NOTE:** The `PATCH` route handler must only update the record if `age` is an integer, if `kind` is not missing, or if `name` is not missing.
 
 Like before, start the HTTP server with `nodemon`.
 
@@ -52,14 +54,12 @@ Open a new shell tab and use the `http` shell command to send HTTP requests to y
 $ http POST http://localhost:8000/pets age=3 kind=parakeet name=Cornflake
 ```
 
-When handling the `POST` and `PATCH` HTTP request methods, if `age`, `kind`, or `name` are missing from the HTTP request body or `age` is not an integer, then the data must not be added to the database and the server must send back the follow HTTP response.
+When handling the `POST` HTTP request method, if `age`, `kind`, or `name` are missing from the HTTP request body or `age` is not an integer, then the data must not be added to the database and the server must send back the follow HTTP response.
 
 | Request Method | Request URL | Request Body                               | Response Status | Response Content-Type | Response Body                                      |
 |----------------|-------------|--------------------------------------------|-----------------|-----------------------|----------------------------------------------------|
 | `POST`         | `/pets`     | `{ "name": "", "age": "two", "kind": "" }` | `400`           | `text/plain`          | `Bad Request`                                      |
 | `GET`          | `/pets/4`   | N/A                                        | `404`           | `text/plain`          | `Not Found`                                        |
-| `PATCH`          | `/pets/1`   | `{ "name": "", "age": "two", "kind": "" }` | `400`           | `text/plain`          | `Bad Request`                                      |
-| `GET`          | `/pets/1`   | N/A                                        | `200`           | `application/json`    | `{ "age": 5, "kind": "snake", "name": "Buttons" }` |
 
 Once you've successfully added these route handlers, check out the `master` branch.
 
@@ -92,17 +92,6 @@ where `app` is the variable that is assigned the result from `express()`.
 ```shell
 $ npm test test/restfulExpressServer.test.js
 ```
-
-## Bonus
-
-Add a route to handle the `PATCH` HTTP request method. The `PATCH` method issues a command to partially update a record in the database.
-
-| Request Method | Request URL | Request Body         | Response Status | Response Content-Type | Response Body                                   |
-|----------------|-------------|----------------------|-----------------|-----------------------|-------------------------------------------------|
-| `PATCH`        | `/pets/3`   | `{ "name": "Fido" }` | `200`           | `application/json`    | `{ "name": "Fido", "age": 4, "kind": "puppy" }` |
-| `GET`          | `/pets/3`   | N/A                  | `200`           | `application/json`    | `{ "name": "Fido", "age": 4, "kind": "puppy" }` |
-
-The route handler must only update the record if `age` is an integer, if `kind` is not missing, or if `name` is not missing.
 
 ## Bonus
 
