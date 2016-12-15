@@ -52,13 +52,13 @@ Open a new shell tab and use the `http` shell command to send HTTP requests to y
 $ http POST http://localhost:8000/pets age=3 kind=parakeet name=Cornflake
 ```
 
-When handling the `POST` and `PUT` HTTP request methods, if `age`, `kind`, or `name` are missing from the HTTP request body or `age` is not an integer, then the data must not be added to the database and the server must send back the follow HTTP response.
+When handling the `POST` and `PATCH` HTTP request methods, if `age`, `kind`, or `name` are missing from the HTTP request body or `age` is not an integer, then the data must not be added to the database and the server must send back the follow HTTP response.
 
 | Request Method | Request URL | Request Body                               | Response Status | Response Content-Type | Response Body                                      |
 |----------------|-------------|--------------------------------------------|-----------------|-----------------------|----------------------------------------------------|
 | `POST`         | `/pets`     | `{ "name": "", "age": "two", "kind": "" }` | `400`           | `text/plain`          | `Bad Request`                                      |
 | `GET`          | `/pets/4`   | N/A                                        | `404`           | `text/plain`          | `Not Found`                                        |
-| `PUT`          | `/pets/1`   | `{ "name": "", "age": "two", "kind": "" }` | `400`           | `text/plain`          | `Bad Request`                                      |
+| `PATCH`          | `/pets/1`   | `{ "name": "", "age": "two", "kind": "" }` | `400`           | `text/plain`          | `Bad Request`                                      |
 | `GET`          | `/pets/1`   | N/A                                        | `200`           | `application/json`    | `{ "age": 5, "kind": "snake", "name": "Buttons" }` |
 
 Once you've successfully added these route handlers, check out the `master` branch.
