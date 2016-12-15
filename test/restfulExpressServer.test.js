@@ -124,7 +124,7 @@ describe('pets restfulExpressServer', () => {
   });
 
   describe('PATCH method', () => {
-    it('should update pets.json when given a valid pet object', (done) => {
+    it('should update pets.json when given a complete pet object', (done) => {
       request(app)
         .patch('/pets/1')
         .set('Authorization', 'Basic YWRtaW46bWVvd21peA==')
@@ -154,17 +154,34 @@ describe('pets restfulExpressServer', () => {
             }, done);
         });
     });
-    it('should respond with a 400 status code for invalid data', (done) => {
+
+    it('should update pets.json when given an incomplete pet object', (done) => {
       request(app)
         .patch('/pets/1')
         .set('Authorization', 'Basic YWRtaW46bWVvd21peA==')
         .send({
-          age: 'two',
-          kind: '',
-          name: ''
+          age: 3
         })
-        .expect('Content-type', /text\/plain/)
-        .expect(400, 'Bad Request', done);
+        .expect('Content-type', /json/)
+        .expect(200, {
+          age: 3,
+          kind: 'duck',
+          name: 'Bob'
+        }, (err, _res) => {
+          if (err) {
+            return done(err);
+          }
+
+          request(app)
+            .get('/pets/1')
+            .set('Authorization', 'Basic YWRtaW46bWVvd21peA==')
+            .expect('Content-Type', /json/)
+            .expect(200, {
+              age: 3,
+              kind: 'duck',
+              name: 'Bob'
+            }, done);
+        });
     });
   });
 
