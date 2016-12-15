@@ -29,37 +29,6 @@ describe('pets bonus restfulExpressServer', () => {
     mockFS.restore();
   });
 
-  describe('PATCH method', () => {
-    it('should update pets.json when given a valid pet object', (done) => {
-      request(app)
-        .patch('/pets/1')
-        .send({
-          age: 2
-        })
-        .set('Authorization', 'Basic YWRtaW46bWVvd21peA==')
-        .expect('Content-type', /json/)
-        .expect(200, {
-          age: 2,
-          kind: 'duck',
-          name: 'Bob'
-        }, (err, _res) => {
-          if (err) {
-            return done(err);
-          }
-
-          request(app)
-            .get('/pets/1')
-            .set('Authorization', 'Basic YWRtaW46bWVvd21peA==')
-            .expect('Content-Type', /json/)
-            .expect(200, {
-              age: 2,
-              kind: 'duck',
-              name: 'Bob'
-            }, done);
-        });
-    });
-  });
-
   describe('catch all route handler', () => {
     it('should return a 404 when requesting the root route', (done) => {
       request(app)
