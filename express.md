@@ -45,7 +45,7 @@ nodemon expressServer.js
 Open a new shell tab and use the `http` shell command to send HTTP requests to your server.
 
 ```shell
-http http://localhost:8000/pets
+http GET localhost:8000/pets
 ```
 
 Once you've successfully converted the server app to Express, check out the `master` branch.
@@ -99,13 +99,6 @@ If `age`, `kind`, or `name` are missing from the HTTP request body or `age` is n
 |----------------|-------------|--------------------------------------------|-----------------|-----------------------|---------------|
 | `POST`         | `/pets`     | `{ "name": "", "age": "two", "kind": "" }` | `400`           | `text/plain`          | `Bad Request` |
 | `GET`          | `/pets/4`   | N/A                                        | `404`           | `text/plain`          | `Not Found`   |
-
-## Bonus
-
-Convert the code in your `server.js` file into ES6 syntax. It may be helpful to use linting rules to assist in the conversion.
-
-- [`eslint-config-airbnb`]['airbnb']
-- [`eslint-config-ryansobol`]['ryansobol']
 
 ## Bonus
 
