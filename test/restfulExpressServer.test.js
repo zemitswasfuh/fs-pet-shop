@@ -123,10 +123,10 @@ describe('pets restfulExpressServer', () => {
     });
   });
 
-  describe('PUT method', () => {
+  describe('PATCH method', () => {
     it('should update pets.json when given a valid pet object', (done) => {
       request(app)
-        .put('/pets/1')
+        .patch('/pets/1')
         .set('Authorization', 'Basic YWRtaW46bWVvd21peA==')
         .send({
           age: 2,
@@ -156,7 +156,7 @@ describe('pets restfulExpressServer', () => {
     });
     it('should respond with a 400 status code for invalid data', (done) => {
       request(app)
-        .put('/pets/1')
+        .patch('/pets/1')
         .set('Authorization', 'Basic YWRtaW46bWVvd21peA==')
         .send({
           age: 'two',
