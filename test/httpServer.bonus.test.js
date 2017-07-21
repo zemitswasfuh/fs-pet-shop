@@ -1,16 +1,16 @@
 'use strict';
 
 const request = require('supertest');
-const mockFS = require('mock-fs');
+const rewire = require('rewire');
 
 // Set the port to a different number so that it does not conflict with the
 // other test files.
 process.env.PORT = 3002;
-const app = require('../httpServer');
+const app = rewire('../httpServer');
 
 describe('pets bonus httpServer', () => {
   beforeEach(() => {
-    const petsArr = [{
+    let petsArr = [{
       age: 7,
       kind: 'rainbow',
       name: 'Fido'
@@ -20,13 +20,21 @@ describe('pets bonus httpServer', () => {
       name: 'Bob'
     }];
 
-    mockFS({
-      'pets.json': JSON.stringify(petsArr)
+    app.__set__({
+      'fs': {
+        readFile: function(path, encoding, cb){
+          if(/pets.json$/.test(path)) return cb(null,JSON.stringify(petsArr));
+          cb(new Error('File does not exist'));
+        },
+        writeFile: function(path, data, cb){
+          if(/pets.json$/.test(path)){
+            petsArr = JSON.parse(data);
+            return cb(null);
+          }
+          return cb(new Error('File does not exist'));
+        }
+      }
     });
-  });
-
-  afterEach(() => {
-    mockFS.restore();
   });
 
   describe('catch all route handler', () => {

@@ -1,6 +1,6 @@
 'use strict';
 
-const { assert } = require('chai');
+const assert = require('chai').assert;
 const fs = require('fs');
 const { exec } = require('child_process');
 
