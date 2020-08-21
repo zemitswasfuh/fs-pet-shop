@@ -25,7 +25,7 @@ $ npm install --save body-parser
 $ npm install --save morgan
 ```
 
-## Assignment
+# Assignment Part 1
 
 Your first task is to wire up `body-parser` and `morgan` as middleware to your express app. They will greatly help you with the rest of the assignment.
 
@@ -53,6 +53,8 @@ Open a new shell tab and use the `http` shell command to send HTTP requests to y
 ```shell
 $ http POST localhost:8000/pets age=3 kind=parakeet name=Cornflake
 ```
+
+**Alternatively you can use [Postman](https://www.postman.com/) to test your routes**
 
 When handling the `POST` HTTP request method, if `age`, `kind`, or `name` are missing from the HTTP request body or `age` is not an integer, then the data must not be added to the database and the server must send back the follow HTTP response.
 
@@ -93,21 +95,20 @@ where `app` is the variable that is assigned the result from `express()`.
 $ npm test test/restfulExpressServer.test.js
 ```
 
-## Bonus
-
-Convert the code in your `server.js` file into ES6 syntax. It may be helpful to use linting rules to assist in the conversion.
-
-- [`eslint-config-airbnb`]['airbnb']
-- [`eslint-config-ryansobol`]['ryansobol']
-
-## Bonus
-
 Add [404 Not Found]['404'] middleware to handle all unknown HTTP requests and send an appropriate response.
 
 | Request Method | Request URL | Response Status | Response Content-Type | Response Body |
 |----------------|-------------|-----------------|-----------------------|---------------|
 | `GET`          | `/`         | `404`           | `text/plain`          | `Not Found`   |
 | `GET`          | `/blah`     | `404`           | `text/plain`          | `Not Found`   |
+
+
+# Assignment Part 2
+
+**Re-work your server so that it connects to a RDBMS (e.g. Postgres or MySQL) and queries that database in each route instead of a JSON file**
+
+This will require you to create a new database, build out the table(s), install certain dependencies using `npm`, and tell the server to connect to the database before you can run queries in each route.
+
 
 ## Bonus
 
