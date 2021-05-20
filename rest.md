@@ -60,8 +60,7 @@ When handling the `POST` HTTP request method, if `age`, `kind`, or `name` are mi
 
 | Request Method | Request URL | Request Body                               | Response Status | Response Content-Type | Response Body                                      |
 |----------------|-------------|--------------------------------------------|-----------------|-----------------------|----------------------------------------------------|
-| `POST`         | `/pets`     | `{ "name": "", "age": "two", "kind": "" }` | `400`           | `text/plain`          | `Bad Request`                                      |
-| `GET`          | `/pets/4`   | N/A                                        | `404`           | `text/plain`          | `Not Found`                                        |
+| `POST`         | `/pets`     | `{ "name": "", "age": "two", "kind": "" }` | `400`           | `text/plain`          | `Bad Request`                                      |                                      |
 
 Once you've successfully added these route handlers, check out the `master` branch.
 
