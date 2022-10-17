@@ -27,12 +27,6 @@ Create a `pets.js` file for your filesystem code.
 touch pets.js
 ```
 
-Create a `.eslintrc.js` file and add your preferred linting rules.
-
-```shell
-touch .eslintrc.js
-```
-
 ## Assignment
 
 Your first task is to build a command-line application that displays its usage, ideally to the [standard error]['stderr'] channel, when invoked without a subcommand. The app should [exit the process]['exit'] with a non-zero exit code to indicate that it failed to complete any work.
@@ -95,12 +89,6 @@ If the `pets.json` file ever becomes corrupted, you can reset it with the `git c
 $ git checkout -- pets.json
 ```
 
-We have provided tests for you to check your work. To run the command for this exercise, run the following command.
-
-```shell
-$ npm test test/pets.test.js
-```
-
 ## Bonus
 
 Refactor your app to also update records in the database when given the `update` subcommand. Remember to convert the `age` into an integer. For example:
@@ -142,13 +130,6 @@ $ node pets.js read
 
 ## Bonus
 
-Convert the code in your `pets.js` file into ES6 syntax. It may be helpful to use linting rules to assist in the conversion.
-
-- [`eslint-config-airbnb`]['airbnb']
-- [`eslint-config-ryansobol`]['ryansobol']
-
-## Bonus
-
 Add a shebang(#!) to the start of the `pets.js` file and modify its permissions so it can be run from the command-line without the `node` command. For example:
 
 ```shell
@@ -168,16 +149,6 @@ $ ./pets.js read
   { age: 3, kind: 'parakeet', name: 'Cornflake' } ]
 ```
 
-## Bonus Tests
-
-We have provided tests for you to check your work for the bonus specifically. To run the command for this exercise, run the following command.
-
-```shell
-$ npm test test/pets.bonus.test.js
-```
-
-['airbnb']: https://www.npmjs.com/package/eslint-config-airbnb
 ['argv']: https://nodejs.org/api/process.html#process_process_argv
 ['exit']: https://nodejs.org/api/process.html#process_process_exit_code
-['ryansobol']: https://github.com/ryansobol/eslint-config-ryansobol#language-configuration
 ['stderr']: https://nodejs.org/api/console.html#console_console_error_data

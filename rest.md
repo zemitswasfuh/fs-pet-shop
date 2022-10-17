@@ -32,7 +32,7 @@ Your first task is to wire up `body-parser` and `morgan` as middleware to your e
 Your next task is to create a RESTful Express HTTP server called `restfulExpressServer.js` to handle the create, update, and destroy HTTP commands. The route handlers must translate their respective command into an appropriate action that manages the records in the database. Once the database action is complete, the route handlers must send back an appropriate HTTP response.
 
 | Request Method | Request URL | Request Body                                            | Response Status | Response Content-Type | Response Body                                           |
-|----------------|-------------|---------------------------------------------------------|-----------------|-----------------------|---------------------------------------------------------|
+| -------------- | ----------- | ------------------------------------------------------- | --------------- | --------------------- | ------------------------------------------------------- |
 | `POST`         | `/pets`     | `{ "name": "Cornflake", "age": 3, "kind": "parakeet" }` | `200`           | `application/json`    | `{ "name": "Cornflake", "age": 3, "kind": "parakeet" }` |
 | `GET`          | `/pets/3`   | N/A                                                     | `200`           | `application/json`    | `{ "name": "Cornflake", "age": 3, "kind": "parakeet" }` |
 | `PATCH`        | `/pets/3`   | `{ "name": "Fido" }`                                    | `200`           | `application/json`    | `{ "name": "Fido", "age": 3, "kind": "parakeet" }`      |
@@ -58,9 +58,9 @@ $ http POST localhost:8000/pets age=3 kind=parakeet name=Cornflake
 
 When handling the `POST` HTTP request method, if `age`, `kind`, or `name` are missing from the HTTP request body or `age` is not an integer, then the data must not be added to the database and the server must send back the follow HTTP response.
 
-| Request Method | Request URL | Request Body                               | Response Status | Response Content-Type | Response Body                                      |
-|----------------|-------------|--------------------------------------------|-----------------|-----------------------|----------------------------------------------------|
-| `POST`         | `/pets`     | `{ "name": "", "age": "two", "kind": "" }` | `400`           | `text/plain`          | `Bad Request`                                      |                                      |
+| Request Method | Request URL | Request Body                               | Response Status | Response Content-Type | Response Body |
+| -------------- | ----------- | ------------------------------------------ | --------------- | --------------------- | ------------- | --- |
+| `POST`         | `/pets`     | `{ "name": "", "age": "two", "kind": "" }` | `400`           | `text/plain`          | `Bad Request` |     |
 
 Once you've successfully added these route handlers, check out the `master` branch.
 
@@ -80,27 +80,12 @@ And delete the feature branch.
 $ git br -d restful_express_routes
 ```
 
-## Tests
-
-We have provided tests for you to check your work. In order for the tests to run, you will need to export your server so the tests can import it in using `require`. To export your server, simply write the following line at the bottom of the file:
-
-```javascript
-module.exports = app;
-```
-
-where `app` is the variable that is assigned the result from `express()`.
-
-```shell
-$ npm test test/restfulExpressServer.test.js
-```
-
 Add [404 Not Found]['404'] middleware to handle all unknown HTTP requests and send an appropriate response.
 
 | Request Method | Request URL | Response Status | Response Content-Type | Response Body |
-|----------------|-------------|-----------------|-----------------------|---------------|
+| -------------- | ----------- | --------------- | --------------------- | ------------- |
 | `GET`          | `/`         | `404`           | `text/plain`          | `Not Found`   |
 | `GET`          | `/blah`     | `404`           | `text/plain`          | `Not Found`   |
-
 
 # Assignment Part 2
 
@@ -108,13 +93,12 @@ Add [404 Not Found]['404'] middleware to handle all unknown HTTP requests and se
 
 This will require you to create a new database, build out the table(s), install certain dependencies using `npm`, and tell the server to connect to the database before you can run queries in each route.
 
-
 ## Bonus
 
 Add [500 Internal Server Error]['500'] middleware to handle all internal server errors and send an appropriate response. It may be helpful to test your error-handling middleware with a route handler that calls the `next()` function with a `new Error()`. See approach #2 in the [Node.js Error Handling]['error-handling'] guide for more details on how the `next()` function works in Express.
 
 | Request Method | Request URL | Response Status | Response Content-Type | Response Body           |
-|----------------|-------------|-----------------|-----------------------|-------------------------|
+| -------------- | ----------- | --------------- | --------------------- | ----------------------- |
 | `GET`          | `/boom`     | `500`           | `text/plain`          | `Internal Server Error` |
 
 Once this is working, refactor your server's route handlers to call the `next()` function to handle all filesystem errors instead of using `throw`.
@@ -123,14 +107,14 @@ Once this is working, refactor your server's route handlers to call the `next()`
 
 Add [basic access authentication]['auth'] middleware to protect all routes from unauthorized access. In other words, the middleware must send the following HTTP response for all unauthorized HTTP requests.
 
-| Response Status | Response Content-Type | Response WWW-Authenticate | Response Body           |
-|-----------------|-----------------------|---------------------------|-------------------------|
-| `401`           | `text/plain`          | `Basic realm="Required"`  | `Unauthorized`          |
+| Response Status | Response Content-Type | Response WWW-Authenticate | Response Body  |
+| --------------- | --------------------- | ------------------------- | -------------- |
+| `401`           | `text/plain`          | `Basic realm="Required"`  | `Unauthorized` |
 
 To make an authorized HTTP request, the user must specify the correct credentials such as a name of `admin` and a password of `meowmix`. The client will then encode the credentials and include them in the `Authorization` header of the HTTP request.
 
 | Request Method | Request URL | Request Authorization        |
-|----------------|-------------|------------------------------|
+| -------------- | ----------- | ---------------------------- |
 | `GET`          | `/pets`     | `Basic YWRtaW46bWVvd21peA==` |
 
 Here's an example of making an unauthorized HTTP request.
@@ -192,19 +176,7 @@ ETag: W/"54-D2Au1DrDyt59Q+wXwR4adQ"
 ]
 ```
 
-## Bonus Tests
-
-We have provided tests for you to check your work specifically for the bonus. To run the command for this exercise, run the following command.
-
-```shell
-$ npm test test/restfulExpressServer.bonus.test.js
-```
-
-**NOTE** For Basic Authentication, the tests assume the username is "admin"  and the password is "meowmix".
-
 ['404']: http://expressjs.com/en/starter/faq.html#how-do-i-handle-404-responses
 ['500']: http://expressjs.com/en/starter/faq.html#how-do-i-setup-an-error-handler
-['airbnb']: https://www.npmjs.com/package/eslint-config-airbnb
 ['auth']: https://en.wikipedia.org/wiki/Basic_access_authentication
 ['error-handling']: http://sahatyalkabov.com/jsrecipes/#!/backend/nodejs-error-handling
-['ryansobol']: https://github.com/ryansobol/eslint-config-ryansobol#language-configuration

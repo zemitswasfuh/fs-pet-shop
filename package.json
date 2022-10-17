@@ -4,9 +4,7 @@
   "description": "A small server app to demonstrate CRUD over an HTTP API",
   "main": "restfulExpressServer.js",
   "scripts": {
-    "lint": "eslint",
-    "start": "nodemon",
-    "test": "mocha"
+    "start": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -26,11 +24,5 @@
   "homepage": "https://github.com/gSchool/fs-pet-shop#readme",
   "dependencies": {
     "nodemon": "^1.9.1"
-  },
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.0.2",
-    "rewire": "^2.5.2",
-    "supertest": "^2.0.0"
   }
 }
