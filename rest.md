@@ -54,7 +54,7 @@ Open a new shell tab and use the `http` shell command to send HTTP requests to y
 $ http POST localhost:8000/pets age=3 kind=parakeet name=Cornflake
 ```
 
-**Alternatively you can use [Postman](https://www.postman.com/) to test your routes**
+**Alternatively you can use [Postman](https://www.postman.com/) to test your routes, this is a great tool. When you visit the site, look for the download app link and download the appropriate version for your operating system.**
 
 When handling the `POST` HTTP request method, if `age`, `kind`, or `name` are missing from the HTTP request body or `age` is not an integer, then the data must not be added to the database and the server must send back the follow HTTP response.
 
