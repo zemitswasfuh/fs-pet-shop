@@ -18,16 +18,8 @@ Create and switch to a new feature branch.
 $ git checkout -b restful_express_routes
 ```
 
-Install `body-parser` and `morgan` as a dependencies.
-
-```shell
-$ npm install --save body-parser
-$ npm install --save morgan
-```
 
 # Assignment Part 1
-
-Your first task is to wire up `body-parser` and `morgan` as middleware to your express app. They will greatly help you with the rest of the assignment.
 
 Your next task is to create a RESTful Express HTTP server called `restfulExpressServer.js` to handle the create, update, and destroy HTTP commands. The route handlers must translate their respective command into an appropriate action that manages the records in the database. Once the database action is complete, the route handlers must send back an appropriate HTTP response.
 
