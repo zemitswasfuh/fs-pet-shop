@@ -17,8 +17,12 @@ Create and switch to a new feature branch.
 ```shell
 $ git checkout -b restful_express_routes
 ```
+In order for our application to be able to process json we need to add app.use(express.json()) to our restfulExpressServer.js
+Add this after you define declare app instance. 
 
-
+```shell
+app.use(express.json())
+```
 # Assignment Part 1
 
 Your next task is to create a RESTful Express HTTP server called `restfulExpressServer.js` to handle the create, update, and destroy HTTP commands. The route handlers must translate their respective command into an appropriate action that manages the records in the database. Once the database action is complete, the route handlers must send back an appropriate HTTP response.
