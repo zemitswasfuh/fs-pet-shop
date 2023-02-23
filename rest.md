@@ -18,7 +18,7 @@ Create and switch to a new feature branch.
 $ git checkout -b restful_express_routes
 ```
 In order for our application to be able to process json we need to add app.use(express.json()) to our restfulExpressServer.js
-Add this after you define declare app instance. 
+Add this after you define the app instance. 
 
 ```shell
 app.use(express.json())
